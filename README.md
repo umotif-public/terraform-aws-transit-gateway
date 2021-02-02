@@ -10,31 +10,20 @@ Terraform module to provision [AWS Transit Gateway](https://aws.amazon.com/trans
 
 Terraform 0.13. Pin module to version to `~> v1.0`. Submit pull-requests to `main` branch.
 
-## Usage
+## Usage with VPC module
 
 ```terraform
 module "transit_gateway" {
   source = "../.."
 
   vpc_attachments = {
-    vpc1 = {
-      vpc_id                                          = "10.0.0.0/16"
-      subnet_ids                                      = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+    vpc = {
+      vpc_id                                          = module.vpc.vpc_id
+      subnet_ids                                      = module.vpc.private_subnets
 
       transit_gateway_routes = [
         {
-          destination_cidr_block = module.vpc1.vpc_cidr_block
-        }
-      ]
-    },
-
-    vpc2 = {
-      vpc_id                                          = "10.1.0.0/16"
-      subnet_ids                                      = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
-
-      transit_gateway_routes = [
-        {
-          destination_cidr_block = module.vpc2.vpc_cidr_block
+          destination_cidr_block = "10.1.0.0/16"
         }
       ]
     }
@@ -49,6 +38,25 @@ module "transit_gateway" {
     Environment = "test"
   }
 }
+
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "~> 2.0"
+
+  name = "vpc"
+
+  cidr = "10.0.0.0/16"
+
+  azs            = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+
+  enable_nat_gateway = false
+
+  tags = {
+    Environment = "test"
+  }
+}
+
 ```
 
 ## Assumptions
