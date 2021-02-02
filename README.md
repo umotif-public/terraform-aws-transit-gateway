@@ -6,6 +6,12 @@
 
 Terraform module to provision [AWS Transit Gateway](https://aws.amazon.com/transit-gateway/) resources.
 
+## Not yet supported
+
+* Peering Attachment (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ec2_transit_gateway_peering_attachmen)
+* Peering Attachment Acceptor (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ec2_transit_gateway_peering_attachment_accepter)
+* VPC Attachment Acceptor (https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ec2_transit_gateway_vpc_attachment_accepter)
+
 ## Terraform versions
 
 Terraform 0.13. Pin module to version to `~> v1.0`. Submit pull-requests to `main` branch.
