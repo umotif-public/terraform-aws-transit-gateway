@@ -14,12 +14,13 @@ Terraform 0.13. Pin module to version to `~> v1.0`. Submit pull-requests to `mai
 
 ```terraform
 module "transit_gateway" {
-  source = "../.."
+  source  = "../.."
+  version = "~> 1.0.0"
 
   vpc_attachments = {
     vpc = {
-      vpc_id                                          = module.vpc.vpc_id
-      subnet_ids                                      = module.vpc.private_subnets
+      vpc_id     = module.vpc.vpc_id
+      subnet_ids = module.vpc.private_subnets
 
       transit_gateway_routes = [
         {
@@ -47,7 +48,7 @@ module "vpc" {
 
   cidr = "10.0.0.0/16"
 
-  azs            = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 
   enable_nat_gateway = false
@@ -71,6 +72,7 @@ Module is to be used with Terraform > 0.13.
 
 Module managed by:
 
+* [Marcin Cuber](https://github.com/marcincuber) ([LinkedIn](https://www.linkedin.com/in/marcincuber/))
 * [Abdul Wahid](https://github.com/Ohid25) ([LinkedIn](https://www.linkedin.com/in/abdul-wahid))
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
