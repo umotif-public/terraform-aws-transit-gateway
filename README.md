@@ -30,7 +30,7 @@ module "transit_gateway" {
 
       transit_gateway_routes = [
         {
-          destination_cidr_block = "10.1.0.0/16"
+          destination_cidr_block = "10.0.0.0/16"
         }
       ]
     }
