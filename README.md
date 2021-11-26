@@ -78,7 +78,6 @@ Module is to be used with Terraform > 0.13.
 
 Module managed by:
 
-* [Marcin Cuber](https://github.com/marcincuber) ([LinkedIn](https://www.linkedin.com/in/marcincuber/))
 * [Abdul Wahid](https://github.com/Ohid25) ([LinkedIn](https://www.linkedin.com/in/abdul-wahid))
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
